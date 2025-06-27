@@ -1,4 +1,5 @@
 import argparse
+from summarizer import ChatSummarizer
 
 def main():
     parser = argparse.ArgumentParser(description='AI Chat Log Summarizer')
@@ -14,6 +15,10 @@ def main():
 
     
     print("output path -> " + args.output)
+
+    summarizer_obj = ChatSummarizer()
+    chat = summarizer_obj.load_chat(file_path=args.file)
+    print(chat)
 
 
 if __name__ == '__main__':
