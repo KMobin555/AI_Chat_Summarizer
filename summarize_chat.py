@@ -18,6 +18,7 @@ def main():
 
     summarizer_obj = ChatSummarizer()
     chat = summarizer_obj.load_chat(file_path=args.file)
+    
     print(chat)
 
 
