@@ -21,6 +21,8 @@ def main():
     
     print(chat)
 
+    print("summary temp, ", summarizer_obj.generate_summary())
+
 
 if __name__ == '__main__':
     main()

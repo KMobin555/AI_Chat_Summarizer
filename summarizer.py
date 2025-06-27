@@ -4,21 +4,36 @@ from text_processing import parse_messages
 class ChatSummarizer:
     def __init__(self, file_path = None):
         self.file_path = file_path
-        self.message = None
+        self.messages = None
         self.summary = None
 
     def load_chat(self, file_path = None):
-        if not file_path:
-            raise ValueError("No chat file path provided")
-
         if file_path:
             self.file_path = file_path
 
+        if not self.file_path:
+            raise ValueError("No chat file path provided")
+
         chat_lines = read_chat_file(self.file_path)
-        self.message = parse_messages(chat_lines)
+        self.messages = parse_messages(chat_lines)
 
-        print("parsed message: \n", self.message)
-        return self.message
+        # print("parsed message: \n", self.message)
+        return self.messages
 
 
-        
+    def generate_summary(self):
+        if not self.messages:
+            self.load_chat()
+
+        total_exchanges = sum(len(msgs) for msgs in self.messages.values())
+        user_msg_count = len(self.messages.get('user', []))
+        ai_msg_count = len(self.messages.get('ai',[]))
+
+
+        self.summary = {
+            'total_exchanges': total_exchanges,
+            'user_message_count': user_msg_count,
+            'ai_message_count': ai_msg_count
+        }
+
+        return self.summary
