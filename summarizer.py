@@ -1,10 +1,11 @@
 from file_handler import FileHandler
-from text_analyzer import parse_messages
+from text_analyzer import TextAnalyzer
 
 class ChatSummarizer:
     def __init__(self, use_nltk: bool = False, use_tfidf: bool = False):
         self.messages = None
         self.summary = None
+        self.text_analyzer = TextAnalyzer(use_nltk=use_nltk,use_tfidf=use_tfidf)
 
     def load_chat(self, file_path = None):
         # if file_path:
@@ -14,7 +15,7 @@ class ChatSummarizer:
         #     raise ValueError("No chat file path provided")
 
         chat_lines = FileHandler.read_chat_file(file_path)
-        self.messages = parse_messages(chat_lines)
+        self.messages = self.text_analyzer.parse_messages(chat_lines)
 
         print("parsed message: \n", self.messages)
         return self.messages
