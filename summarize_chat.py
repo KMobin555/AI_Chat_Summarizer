@@ -1,6 +1,6 @@
 import os
 import argparse
-from summarizer import ChatSummarizer
+from chat_summarizer.summarizer import ChatSummarizer
 
 def main():
     parser = argparse.ArgumentParser(description='AI Chat Log Summarizer')
@@ -30,7 +30,7 @@ def main():
             if args.output:
                 with open(args.output, 'a') as f:
                     f.write(f"\nSummary for {filename}:\n{summary}\n")
-                    
+
         print(f"The output saved at {args.output}")
             
     else:

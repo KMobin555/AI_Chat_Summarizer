@@ -7,7 +7,7 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag
 from typing import List, Tuple, Dict
-from constants import STOPWORDS 
+from chat_summarizer.constants import STOPWORDS 
 
 nltk.download('punkt') 
 nltk.download('punkt_tab')

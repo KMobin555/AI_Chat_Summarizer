@@ -1,6 +1,6 @@
 from typing import Dict, List, Tuple 
-from file_handler import FileHandler
-from text_analyzer import TextAnalyzer
+from chat_summarizer.file_handler import FileHandler
+from chat_summarizer.text_analyzer import TextAnalyzer
 
 class ChatSummarizer:
     def __init__(self, use_nltk: bool = False, use_tfidf: bool = False):
