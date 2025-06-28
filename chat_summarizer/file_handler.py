@@ -4,6 +4,7 @@ from typing import List, Dict
 class FileHandler:
     @staticmethod
     def read_chat_file(file_path: str) -> List[str]:
+        """Read chat log file and return lines as list"""
 
         try:
             with open(file_path, 'r', encoding='utf-8') as file:
@@ -15,7 +16,8 @@ class FileHandler:
         
     @staticmethod
     def process_directory(directory_path: str) -> Dict[str, List[str]]:
-
+        """Process all .txt files in a directory"""
+        
         chat_files = {}
 
         try:

@@ -9,11 +9,7 @@ class ChatSummarizer:
         self.text_analyzer = TextAnalyzer(use_nltk=use_nltk,use_tfidf=use_tfidf)
 
     def load_chat(self, file_path: str) -> Dict[str, List[str]]:
-        # if file_path:
-        #     self.file_path = file_path
-
-        # if not self.file_path:
-        #     raise ValueError("No chat file path provided")
+        """Load and parse chat file"""
 
         chat_lines = FileHandler.read_chat_file(file_path)
         self.messages = self.text_analyzer.parse_messages(chat_lines)
@@ -23,6 +19,7 @@ class ChatSummarizer:
 
 
     def generate_summary(self) -> Dict:
+        """Generate summary statistics and analysis"""
         if not self.messages:
             raise ValueError("No messages loaded. Call load_chat() first.")
 
@@ -45,6 +42,7 @@ class ChatSummarizer:
         return self.summary
     
     def format_summary(self) -> str:
+        """Format summary into human-readable text"""
         if not self.summary:
             self.generate_summary()
 
@@ -62,6 +60,7 @@ class ChatSummarizer:
         return '\n'.join(summary_lines)
     
     def summarize_directory(self, directory_path: str):
+        """Summarize all chat logs in a directory"""
 
         chat_files = FileHandler.process_directory(directory_path)
         summaries = []

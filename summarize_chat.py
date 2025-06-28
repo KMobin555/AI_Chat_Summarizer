@@ -15,14 +15,13 @@ def main():
     if not args.output:
         args.output = "output.txt"
 
-    
-    # print("output path -> " + args.output)
-
     # Clear the file contents if it exists, or create it if it doesn't
     with open(args.output, 'w') as f:
         pass 
 
+    # summarizer Object
     summarizer_obj = ChatSummarizer(use_nltk = args.nltk, use_tfidf = args.tfidf)
+
 
     if os.path.isdir(args.input):
         summaries = summarizer_obj.summarize_directory(args.input)
@@ -34,7 +33,7 @@ def main():
                 with open(args.output, 'a') as f:
                     f.write(f"\nSummary for {filename}:\n{summary}\n")
 
-        print(f"The output saved at {args.output}")
+        print(f"\nThe output saved at {args.output}")
             
     else:
         summarizer_obj.load_chat(args.input)
@@ -44,7 +43,7 @@ def main():
             with open(args.output, 'w') as f:
                 f.write(summary)
 
-        print(f"The output saved at {args.output}")
+        print(f"\nThe output saved at {args.output}")
         
 
 if __name__ == '__main__':

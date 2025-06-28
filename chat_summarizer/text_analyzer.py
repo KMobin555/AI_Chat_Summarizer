@@ -24,7 +24,7 @@ class TextAnalyzer:
         self.nltk_stopwords = set(stopwords.words('english')) if use_nltk else None
 
     def _preprocess_text(self, text: str) -> List[Tuple[str, str]]:
-
+        """Preprocess text with POS tagging"""
         translator = str.maketrans('', '', string.punctuation)
         text = text.translate(translator).lower()
         
@@ -51,7 +51,7 @@ class TextAnalyzer:
                     and word.isalpha()]
 
     def _get_wordnet_pos(self, treebank_tag: str) -> str:
-
+        """Convert POS tag to WordNet format"""
         if treebank_tag.startswith('J'):
             return 'a'  # adjective
         elif treebank_tag.startswith('V'):
@@ -64,7 +64,7 @@ class TextAnalyzer:
             return ''  # default (use as is)
 
     def _calculate_tfidf(self, documents: List[List[str]]) -> Dict[str, float]:
-
+        """Calculate TF-IDF scores focusing on nouns and proper concepts"""
 
         all_docs = []
         for doc in documents:
@@ -102,7 +102,7 @@ class TextAnalyzer:
         return tfidf_scores
 
     def analyze_keywords(self, messages: Dict[str, List[str]], top_n: int = 5) -> List[Tuple[str, float]]:
-
+        """Analyze keywords focusing on meaningful concepts"""
 
         if self.use_tfidf:
             tfidf_scores = self._calculate_tfidf([messages['user'], messages['ai']])
@@ -124,7 +124,7 @@ class TextAnalyzer:
     
     @staticmethod
     def parse_messages(chat_lines: List[str]) -> Dict[str, List[str]]:
-
+        """Parse chat lines into user and AI messages"""
         messages = defaultdict(list)
         
         for line in chat_lines:
@@ -137,7 +137,7 @@ class TextAnalyzer:
 
     @staticmethod
     def get_conversation_topics(keywords: List[Tuple[str, float]]) -> str:
-
+        """Generate focused topic description"""
         if not keywords:
             return "The conversation had no identifiable topics."
             
