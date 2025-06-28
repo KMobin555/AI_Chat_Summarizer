@@ -5,6 +5,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import string
+import math
 from .constants import STOPWORDS
 
 nltk.download('punkt')
@@ -37,7 +38,40 @@ class TextAnalyzer:
             ]
 
         return words
+    
+    def _calculate_tfidf(self, documents: List[List[str]]) -> List[Dict[str,float]]:
+        
+        tf = []
+        idf = defaultdict(int)
+        total_docs = len(documents)
 
+        for doc in documents:
+            doc_tf = defaultdict(int)
+            words = self._preprocess_text(' '.join(doc))
+            word_count = len(words)
+
+            for word in words:
+                doc_tf[word] += 1
+                
+            for word in doc_tf:
+                doc_tf[word] /= word_count
+
+            tf.append(doc_tf)
+
+            for word in set(words):
+                idf[word] += 1
+
+        for word in idf:
+            idf[word] = math.log(total_docs/ (1+ idf[word]))
+
+        tfidf_scores = []
+        for doc_tf in tf:
+            doc_tfidf = {}
+            for word, tf_val in doc_tf.items():
+                doc_tfidf[word] = tf_val * idf[word]
+            tfidf_scores.append(doc_tfidf)
+
+        return tfidf_scores
 
     @staticmethod
     def parse_messages(chat_lines: List[str]) -> Dict[str,list[str]]:
