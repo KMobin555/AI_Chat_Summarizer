@@ -39,3 +39,67 @@ Chat Summary:
 - User messages: 2
 - AI responses: 2
 - Most common keywords: python (-0.2027325540540822), use (-0.1689437950450685), tell (0.0), sure (0.0), popular (0.0)
+
+Summary for text1.txt:
+Chat Summary:
+- Total Exchanges: 4
+- User messages: 2
+- AI responses: 2
+- Conversation Topic: The conversation covered topics like tell, sure, popular, programming and language.
+- Most common keywords: tell (0.0), sure (0.0), popular (0.0), programming (0.0), language (0.0)
+
+Summary for text1.txt:
+Chat Summary:
+- Total Exchanges: 4
+- User messages: 2
+- AI responses: 2
+- Conversation Topic: The conversation covered topics like python, use, tell, sure and popular.
+- Most common keywords: python (3), use (2), tell (1), sure (1), popular (1)
+
+Summary for text1.txt:
+Chat Summary:
+- Total Exchanges: 4
+- User messages: 2
+- AI responses: 2
+- The conversation covered topics like tell, sure, popular, programming and language.
+- Most common keywords: tell (0.0), sure (0.0), popular (0.0), programming (0.0), language (0.0)
+
+Summary for text1.txt:
+Chat Summary:
+- Total Exchanges: 4
+- User messages: 2
+- AI responses: 2
+- The conversation covered topics including use, python, tell, sure, and popular.
+- Most common keywords: use (1.7626298943936558), python (1.0192862927618414), tell (0.9581453659370776), sure (0.3193817886456925), popular (0.3193817886456925)
+
+Summary for text1.txt:
+Chat Summary:
+- Total Exchanges: 4
+- User messages: 2
+- AI responses: 2
+- The conversation focused on python and programming.
+- Most common keywords: python (1.8754867786817881), programming (0.638763577291385), language (0.638763577291385), web (0.383258146374831), development (0.383258146374831)
+
+Summary for text1.txt:
+Chat Summary:
+- Total Exchanges: 4
+- User messages: 2
+- AI responses: 2
+- The conversation focused on python and programming.
+- Most common keywords: python (1.8754867786817881), programming (0.638763577291385), language (0.638763577291385), web (0.383258146374831), development (0.383258146374831)
+
+Summary for text1.txt:
+Chat Summary:
+- Total Exchanges: 4
+- User messages: 2
+- AI responses: 2
+- The conversation focused on python and use.
+- Most common keywords: python (3), use (2), tell (1), sure (1), popular (1)
+
+Summary for text1.txt:
+Chat Summary:
+- Total Exchanges: 4
+- User messages: 2
+- AI responses: 2
+- The conversation focused on python and programming.
+- Most common keywords: python (3), programming (1), language (1), web (1), development (1)

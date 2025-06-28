@@ -31,13 +31,15 @@ class ChatSummarizer:
         ai_msg_count = len(self.messages['ai'])
 
         keywords = self.text_analyzer.analyze_keywords(self.messages)
+        topics = self.text_analyzer.get_conversation_topics(keywords)
 
 
         self.summary = {
             'total_exchanges': total_exchanges,
             'user_message_count': user_msg_count,
             'ai_message_count': ai_msg_count,
-            'top_keywords': keywords
+            'top_keywords': keywords,
+            'topics': topics
         }
 
         return self.summary
@@ -51,6 +53,7 @@ class ChatSummarizer:
             f"- Total Exchanges: {self.summary['total_exchanges']}",
             f"- User messages: {self.summary['user_message_count']}",
             f"- AI responses: {self.summary['ai_message_count']}",
+            f"- {self.summary['topics']}",
             "- Most common keywords: " + ', '.join(
                 [f"{word} ({count})" for word, count in self.summary['top_keywords']]
             )
