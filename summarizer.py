@@ -39,9 +39,27 @@ class ChatSummarizer:
 
         return self.summary
     
+    def format_summary(self) -> str:
+        if not self.summary:
+            self.generate_summary()
+
+        summary_lines = [
+            "Chat Summary:",
+            f"- Total Exchanges: {self.summary['total_exchanges']}",
+            f"- User messages: {self.summary['user_message_count']}",
+            f"- AI responses: {self.summary['ai_message_count']}",
+        ]
+
+        return '\n'.join(summary_lines)
+    
     def summarize_directory(self, directory_path: str):
 
         chat_files = FileHandler.process_directory(directory_path)
+        summaries = []
 
+        for filename, chat_lines in chat_files.items():
+            self.messages = self.text_analyzer.parse_messages(chat_lines)
+            self.generate_summary()
+            summaries.append((filename,self.format_summary()))
 
-        return chat_files
+        return summaries
