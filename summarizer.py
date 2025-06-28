@@ -1,3 +1,4 @@
+from typing import Dict, List, Tuple 
 from file_handler import FileHandler
 from text_analyzer import TextAnalyzer
 
@@ -7,7 +8,7 @@ class ChatSummarizer:
         self.summary = None
         self.text_analyzer = TextAnalyzer(use_nltk=use_nltk,use_tfidf=use_tfidf)
 
-    def load_chat(self, file_path = None):
+    def load_chat(self, file_path: str) -> Dict[str, List[str]]:
         # if file_path:
         #     self.file_path = file_path
 
@@ -21,13 +22,13 @@ class ChatSummarizer:
         return self.messages
 
 
-    def generate_summary(self):
+    def generate_summary(self) -> Dict:
         if not self.messages:
-            self.load_chat()
+            raise ValueError("No messages loaded. Call load_chat() first.")
 
-        total_exchanges = sum(len(msgs) for msgs in self.messages.values())
-        user_msg_count = len(self.messages.get('user', []))
-        ai_msg_count = len(self.messages.get('ai',[]))
+        total_exchanges = len(self.messages['user']) + len(self.messages['ai']);
+        user_msg_count = len(self.messages['user'])
+        ai_msg_count = len(self.messages['ai'])
 
 
         self.summary = {

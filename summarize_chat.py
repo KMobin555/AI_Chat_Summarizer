@@ -28,6 +28,7 @@ def main():
             
     else:
         chat = summarizer_obj.load_chat(args.input)
+        chat = summarizer_obj.generate_summary()
         print(chat)
         
 
