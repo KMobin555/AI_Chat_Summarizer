@@ -30,6 +30,8 @@ def main():
             if args.output:
                 with open(args.output, 'a') as f:
                     f.write(f"\nSummary for {filename}:\n{summary}\n")
+                    
+        print(f"The output saved at {args.output}")
             
     else:
         summarizer_obj.load_chat(args.input)
@@ -38,6 +40,8 @@ def main():
         if args.output:
             with open(args.output, 'w') as f:
                 f.write(summary)
+
+        print(f"The output saved at {args.output}")
         
 
 if __name__ == '__main__':
