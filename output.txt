@@ -1,4 +1,12 @@
 
+Summary for chat.txt:
+Chat Summary:
+- Total Exchanges: 4
+- User messages: 2
+- AI responses: 2
+- The conversation focused on hello and machine.
+- Most common keywords: hello (1.916290731874155), machine (1.133119217824493), learning (1.133119217824493), assist (0.9581453659370776), today (0.9581453659370776)
+
 Summary for text1.txt:
 Chat Summary:
 - Total Exchanges: 4
