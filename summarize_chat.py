@@ -11,13 +11,16 @@ def main():
 
     args = parser.parse_args()
 
-    # print("file path -> " + args.file)
 
     if not args.output:
         args.output = "output.txt"
 
     
-    print("output path -> " + args.output)
+    # print("output path -> " + args.output)
+
+    # Clear the file contents if it exists, or create it if it doesn't
+    with open(args.output, 'w') as f:
+        pass 
 
     summarizer_obj = ChatSummarizer(use_nltk = args.nltk, use_tfidf = args.tfidf)
 
