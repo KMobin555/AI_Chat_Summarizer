@@ -23,13 +23,21 @@ def main():
 
     if os.path.isdir(args.input):
         summaries = summarizer_obj.summarize_directory(args.input)
-        # chat = summaries.
-        print(summaries)
+        
+        for filename, summary in summaries:
+            print(f"\nSummary for {filename}")
+            print(summary)
+            if args.output:
+                with open(args.output, 'a') as f:
+                    f.write(f"\nSummary for {filename}:\n{summary}\n")
             
     else:
-        chat = summarizer_obj.load_chat(args.input)
-        chat = summarizer_obj.format_summary()
-        print(chat)
+        summarizer_obj.load_chat(args.input)
+        summary = summarizer_obj.format_summary()
+        print(summary)
+        if args.output:
+            with open(args.output, 'w') as f:
+                f.write(summary)
         
 
 if __name__ == '__main__':
