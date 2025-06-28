@@ -26,15 +26,18 @@ class ChatSummarizer:
         if not self.messages:
             raise ValueError("No messages loaded. Call load_chat() first.")
 
-        total_exchanges = len(self.messages['user']) + len(self.messages['ai']);
+        total_exchanges = len(self.messages['user']) + len(self.messages['ai'])
         user_msg_count = len(self.messages['user'])
         ai_msg_count = len(self.messages['ai'])
+
+        keywords = self.text_analyzer.analyze_keywords(self.messages)
 
 
         self.summary = {
             'total_exchanges': total_exchanges,
             'user_message_count': user_msg_count,
-            'ai_message_count': ai_msg_count
+            'ai_message_count': ai_msg_count,
+            'top_keywords': keywords
         }
 
         return self.summary
@@ -48,6 +51,9 @@ class ChatSummarizer:
             f"- Total Exchanges: {self.summary['total_exchanges']}",
             f"- User messages: {self.summary['user_message_count']}",
             f"- AI responses: {self.summary['ai_message_count']}",
+            "- Most common keywords: " + ', '.join(
+                [f"{word} ({count})" for word, count in self.summary['top_keywords']]
+            )
         ]
 
         return '\n'.join(summary_lines)
